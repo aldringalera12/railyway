@@ -39,12 +39,26 @@ Thumbs.db
 .git/
 .gitignore
 
-# Documentation and text files
-*.txt
+# Documentation and text files (but keep requirements.txt)
 *.md
 README.md
 API_README.md
 CHATBOT_README.md
+1st.txt
+admission.txt
+admission_requirements.txt
+advanced_question_fixes.txt
+comprehensive_fixes.txt
+corrections_and_additions.txt
+critical_university_info.txt
+example_definitions.txt
+inbound_cross_enrolment.txt
+individual_definition.txt
+liquor_offense_penalties.txt
+private_scholarship_fix.txt
+prmsu_location_info.txt
+type_of_cross_enrollment.txt
+uniform_and_assistant_fixes.txt
 
 # Web files (not needed for API)
 *.html
