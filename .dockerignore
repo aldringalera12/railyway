@@ -1,4 +1,4 @@
-# Python
+# Python cache and build files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -24,36 +24,54 @@ wheels/
 venv/
 env/
 ENV/
+.venv/
 
-# IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+.vs/
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Git
+# Git files
 .git/
 .gitignore
+.gitattributes
 
-# Test files
+# Test and development files (exclude to reduce build size)
 test_*.py
 *_test.py
 demo_*.py
 monitor_*.py
 quick_*.py
+compare_*.py
 
-# Documentation
+# Documentation files (not needed in production)
 README.md
 API_README.md
 CHATBOT_README.md
+RAILWAY_DEPLOYMENT.md
+DEPLOYMENT_SUMMARY.md
+*.md
 
-# Logs
+# Development scripts
+deploy.bat
+deploy_to_railway.py
+
+# Logs and temporary files
 *.log
-
-# Temporary files
 *.tmp
 *.temp
+
+# Local development files
+.env
+.env.local
+
+# Web interface (not needed for API)
+chatbot_web.html
+web_server.py
