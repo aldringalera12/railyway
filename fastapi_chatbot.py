@@ -16,7 +16,7 @@ from chatbot import VectorDatabaseChatbot
 from definition_chunker import DefinitionChunker
 
 # Get environment variables for Railway deployment
-COHERE_API_KEY = os.getenv("COHERE_API_KEY", "m7uIZhmn9itLRlZmEvHVwIJ6nvJ0FU2zZ5vd40e9")
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 PORT = int(os.getenv("PORT", 8000))
 RAILWAY_ENVIRONMENT = os.getenv("RAILWAY_ENVIRONMENT", "development")
 DB_PATH = os.getenv("DB_PATH", "./vector_db")
@@ -181,6 +181,9 @@ async def startup_event():
     try:
         # Use environment variables for Railway deployment
         api_key = COHERE_API_KEY
+        if not api_key:
+            raise ValueError("COHERE_API_KEY environment variable is required")
+
         db_path = DB_PATH
         collection_name = "definitions"
 
