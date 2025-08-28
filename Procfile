@@ -1,1 +1,1 @@
-web: python fastapi_chatbot.py
+web: python rebuild_db.py && python fastapi_chatbot.py

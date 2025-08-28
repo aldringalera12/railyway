@@ -198,9 +198,29 @@ async def startup_event():
         print(f"✅ Chatbot initialized successfully on {RAILWAY_ENVIRONMENT}")
         print(f"📁 Database path: {db_path}")
 
-        # Check database content
+        # Check database content and rebuild if empty
         definitions = chatbot.chunker.list_all_definitions()
         print(f"📊 Database contains {len(definitions)} definitions")
+
+        # If database is empty, initialize with basic PRMSU data
+        if len(definitions) == 0:
+            print("🔄 Database is empty, initializing with basic PRMSU data...")
+            basic_definitions = [
+                {
+                    'term': 'PRMSU',
+                    'definition': 'President Ramon Magsaysay State University (PRMSU) is a state university located in Iba, Zambales, Philippines. It was officially established by Republic Act No. 11015 on April 20, 2018.',
+                    'full_text': 'PRMSU: President Ramon Magsaysay State University (PRMSU) is a state university located in Iba, Zambales, Philippines. It was officially established by Republic Act No. 11015 on April 20, 2018.',
+                    'type': 'definition'
+                },
+                {
+                    'term': 'Cross Enrolment Types',
+                    'definition': 'The four types of cross-enrolment at PRMSU are: 1) Inbound Cross Enrolment (students from other institutions enrolling at PRMSU), 2) Outbound Cross Enrolment (PRMSU students enrolling in external institutions), 3) In-Campus Cross Enrolment (PRMSU students enrolling in different colleges within the same campus), and 4) Out-Campus Cross Enrolment (PRMSU students enrolling in another PRMSU campus).',
+                    'full_text': 'Cross Enrolment Types: The four types of cross-enrolment at PRMSU are: 1) Inbound Cross Enrolment, 2) Outbound Cross Enrolment, 3) In-Campus Cross Enrolment, and 4) Out-Campus Cross Enrolment.',
+                    'type': 'definition'
+                }
+            ]
+            chatbot.chunker.store_chunks(basic_definitions, "initialization")
+            print("✅ Basic PRMSU data initialized")
         
     except Exception as e:
         print(f"❌ Error initializing chatbot: {e}")
